@@ -1,14 +1,46 @@
 #!/usr/bin/perl -w
 use POSIX qw(strftime);
 
-@date;
-@start;
-@stop;
-@comments;
+# parse the argument
+my $author = "";
+$author = shift @ARGV if @ARGV;
 
-@git_log = `git log --author="" --pretty=format:"%ct %s"
+# initialise arrays
+my @start;
+my @stop;
+my @comments;
+
+# convert epoc to time string
+sub epoc_to_time {
+    my $epoc = shift @_;
+    $time = strftime "%d/%m %R", localtime($epoc);
+    return $time;
+}
+
+
+# parse git log
+@git_log = `git log --author="$author" --pretty=format:"%ct %s"
 `;
+foreach my $log (@git_log) {
+    if ($log =~ m|(^\d{10}) (\d\d):(\d\d) (.*$)|) {
+        # generate stop time
+        my $stop_epoc = $1;
+        push @stop, epoc_to_time($stop_epoc);
+        # generate start time
+        my $hour = $2;
+        my $minute = $3;
+        my $start_epoc = $stop_epoc - 3600 * $hour - 60 * $minute;
+        push @start, epoc_to_time($start_epoc);
+        # generate comment
+        my $comment = $4;
+        push @comments, $comment;
+    }
+}
 
-foreach $log (@git_log) {
-    print $log;
+
+# print the diary
+print "Start Time  |Stop Time   |Comments                                      \n";
+print "------------|------------|----------------------------------------------\n";
+foreach my $i (0..scalar @start - 1) {
+    print "$start[$i] |$stop[$i] |$comments[$i]\n";
 }
