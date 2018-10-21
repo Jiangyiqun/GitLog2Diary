@@ -29,5 +29,3 @@ git commit -m "01:30 your commit message"
 ## Example
 
 ![](./example.png)
-
-some entry do not have start time, because their git commit message do not follow the format.

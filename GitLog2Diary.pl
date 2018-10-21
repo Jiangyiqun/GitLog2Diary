@@ -3,14 +3,12 @@
 # Documentation: https://github.com/Jiangyiqun/GitLog2Diary
 use POSIX qw(strftime);
 
-# parse the argument
-my $author = "";
-$author = shift @ARGV if @ARGV;
-
-# initialise arrays
+# global varibles
 my @start;
 my @stop;
 my @comments;
+my $author = "";
+$author = shift @ARGV if @ARGV;
 
 # convert epoc to time string
 sub epoc_to_time {
@@ -42,7 +40,7 @@ foreach my $log (@git_log) {
         my $stop_epoc = $1;
         unshift @stop, epoc_to_time($stop_epoc);
         # generate start time
-        unshift @start, "           ";
+        unshift @start, "Null       ";
         # generate comment
         my $comment = $2;
         unshift @comments, $comment;
@@ -55,3 +53,20 @@ print "------------|------------|----------------------------------------------\
 foreach my $i (0..scalar @start - 1) {
     print "$start[$i] |$stop[$i] |$comments[$i]\n";
 }
+
+# print additional information
+if ($author) {
+    print "\n$author\'s Diary is\n";
+} else {
+    print "\nThis Diary is\n";
+}
+
+my $user = `echo \$USER`;
+my $host = `hostname`;
+print "Generated on $host";
+
+my $current_time = strftime "%a %b %e %H:%M:%S %Y", localtime();
+print "          at $current_time\n";
+
+my $repo = 'https://github.com/Jiangyiqun/GitLog2Diary';
+print "          by $repo";
