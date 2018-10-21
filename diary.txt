@@ -1,6 +1,0 @@
-Start Time  |Stop Time   |Comments                                      
-------------|------------|----------------------------------------------
-21/10 20:32 |21/10 20:34 |add hello world
-21/10 19:34 |21/10 20:46 |add some lines of code
-21/10 20:53 |21/10 21:23 |almost finish
-21/10 21:25 |21/10 21:26 |remove vstages
