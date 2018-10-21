@@ -1,4 +1,6 @@
 #!/usr/bin/perl -w
+# Author: Jack Jiang
+# Documentation: https://github.com/Jiangyiqun/GitLog2Diary
 use POSIX qw(strftime);
 
 # parse the argument
@@ -36,7 +38,6 @@ foreach my $log (@git_log) {
         unshift @comments, $comment;
     }
 }
-
 
 # print the diary
 print "Start Time  |Stop Time   |Comments                                      \n";
