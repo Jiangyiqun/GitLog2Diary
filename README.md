@@ -4,6 +4,8 @@
 
 A script to generate diary from git log, this is required by COMP9041 assignment 2 in 2018S2.
 
+>Andrew wrote: Some students choose to store this information in git commit messages and use a script to generate diary.txt from git log before they submit. You are welcome to do this. 
+
 ## Git Commit Message Format
 
 **Important: to generate valid diary, git commit message must follow a special format**
