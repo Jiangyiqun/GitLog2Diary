@@ -8,14 +8,14 @@ A script to generate diary from git log, this is required by COMP9041 assignment
 
 ## Git Commit Message Format
 
-**Important: to generate valid diary, git commit message must follow a special format**
+**Important: to generate start time, git commit message must follow a special format**
 
-**重要：为了生成有效日志，git commit 内容必须遵循特定格式**
+**重要：为了生成开始时间，git commit 内容必须遵循特定格式**
 
 ```shell
 git commit -m "01:30 your commit message"
 ```
-- [01:30]: The hours and minutes used for this commit, a white space is followed. If omitted, this commit will be ignored when generating diary.
+- [01:30]: The hours and minutes used for this commit, a white space is followed.
 
 ## Full Usage Documentation
 
@@ -29,3 +29,5 @@ git commit -m "01:30 your commit message"
 ## Example
 
 ![](./example.png)
+
+some entry do not have start time, because their git commit message do not follow the format.

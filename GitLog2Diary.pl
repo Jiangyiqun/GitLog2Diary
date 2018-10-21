@@ -36,6 +36,16 @@ foreach my $log (@git_log) {
         # generate comment
         my $comment = $4;
         unshift @comments, $comment;
+    } else {
+        $log =~ m|(^\d{10}) (.*$)|;
+        # generate stop time
+        my $stop_epoc = $1;
+        unshift @stop, epoc_to_time($stop_epoc);
+        # generate start time
+        unshift @start, "           ";
+        # generate comment
+        my $comment = $2;
+        unshift @comments, $comment;
     }
 }
 
