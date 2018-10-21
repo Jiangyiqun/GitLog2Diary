@@ -47,26 +47,30 @@ foreach my $log (@git_log) {
     }
 }
 
+
+# print title
+if ($author) {
+    print "# $author\'s Diary\n\n";
+} else {
+    print "# This Diary\n\n";
+}
+# print Author
+my $user = `echo \$USER`;
+print "- Author: $user";
+# print Date
+my $current_time = strftime "%a %b %e %H:%M:%S %Y", localtime();
+print "- Date: $current_time\n";
+# print generate information
+print "- Generated\n";
+my $host = `hostname`;
+my $repo = 'https://github.com/Jiangyiqun/GitLog2Diary';
+print "    - at $host";
+print "    - by $repo\n\n";
+
+
 # print the diary
 print "Start Time  |Stop Time   |Comments                                      \n";
 print "------------|------------|----------------------------------------------\n";
 foreach my $i (0..scalar @start - 1) {
     print "$start[$i] |$stop[$i] |$comments[$i]\n";
 }
-
-# print additional information
-if ($author) {
-    print "\n$author\'s Diary is\n";
-} else {
-    print "\nThis Diary is\n";
-}
-
-my $user = `echo \$USER`;
-my $host = `hostname`;
-print "Generated on $host";
-
-my $current_time = strftime "%a %b %e %H:%M:%S %Y", localtime();
-print "          at $current_time\n";
-
-my $repo = 'https://github.com/Jiangyiqun/GitLog2Diary';
-print "          by $repo";
