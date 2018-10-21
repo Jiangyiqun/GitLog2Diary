@@ -25,15 +25,15 @@ foreach my $log (@git_log) {
     if ($log =~ m|(^\d{10}) (\d\d):(\d\d) (.*$)|) {
         # generate stop time
         my $stop_epoc = $1;
-        push @stop, epoc_to_time($stop_epoc);
+        unshift @stop, epoc_to_time($stop_epoc);
         # generate start time
         my $hour = $2;
         my $minute = $3;
         my $start_epoc = $stop_epoc - 3600 * $hour - 60 * $minute;
-        push @start, epoc_to_time($start_epoc);
+        unshift @start, epoc_to_time($start_epoc);
         # generate comment
         my $comment = $4;
-        push @comments, $comment;
+        unshift @comments, $comment;
     }
 }
 
