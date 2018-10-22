@@ -19,8 +19,9 @@ sub epoc_to_time {
 
 
 # parse git log
-@git_log = `git log --author="$author" --pretty=format:"%ct %s"
+my @git_log = `git log --author="$author" --pretty=format:"%ct %s"
 `;
+my $total_minutes = 0;
 foreach my $log (@git_log) {
     if ($log =~ m|(^\d{10}) (\d\d):(\d\d) (.*$)|) {
         # generate stop time
@@ -34,6 +35,8 @@ foreach my $log (@git_log) {
         # generate comment
         my $comment = $4;
         unshift @comments, $comment;
+        # add up total minutes
+        $total_minutes += 60 * $hour + $minute;
     } else {
         $log =~ m|(^\d{10}) (.*$)|;
         # generate stop time
@@ -74,3 +77,8 @@ print "------------|------------|----------------------------------------------\
 foreach my $i (0..scalar @start - 1) {
     print "$start[$i] |$stop[$i] |$comments[$i]\n";
 }
+
+# print the summery
+my $hour = int($total_minutes / 60);
+my $minute = $total_minutes % 60;
+print "\nSummery: $hour hours and $minute minutes\n";
