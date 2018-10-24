@@ -1,32 +1,35 @@
-# GitLog2Diary
+# GitLog2Diary / Git 日志重排
 
-## Description
+## Description / 描述
 
-A script to generate diary from git log, this is required by COMP9041 assignment 2 in 2018S2.
+A script to generate a markdown diary from git log, which helps you to know how long you have spent on each commit as well as the whole project.
 
->Andrew wrote: Some students choose to store this information in git commit messages and use a script to generate diary.txt from git log before they submit. You are welcome to do this. 
+一个由 Git Log 生成 markdown 日志的小工具，用于帮助你得知在每个提交上使用的时间，以及在整个项目上的耗时。
 
-## Git Commit Message Format
+**Important: to record the start time of each commit, the commit message must follow a particular format**
 
-**Important: to generate start time, git commit message must follow a special format**
+**重要：为了记录每个提交的开始时间，提交消息必须遵循特定格式**
 
-**重要：为了生成开始时间，git commit 内容必须遵循特定格式**
+## Commit Message Format / 提交消息格式
 
 ```shell
 git commit -m "01:30 your commit message"
 ```
-- [01:30]: The hours and minutes used for this commit, a white space is followed.
+- hh:mm your commit message. If the start time tag is omitted, the time spent on this commit will be set to 0.
+- 小时:分钟 提交消息。若忽略开始时间标签，则该提交的耗时被视为0.
 
-## Full Usage Documentation
+## Usage Documentation / 使用文档
 
 ```shell
 ./GitLog2Diary.pl ["Author"] [> diary.txt]
 ```
 
-- [Author]: specify an author. If omitted, all author will be matched.
+- [Author]: specify an author. If omitted, all authors of this project will be counted.
+- [作者]: 指定一个作者。若不提供，则该项目的所有作者都会被计算在内。
 - [> diary.txt]: output as a text file. If omitted, just print out the diary.
+- [> 日志.txt]: 输出为文本文件。如果忽略，则只是打印到屏幕上。
 
-## Example
+## Example / 例子
 
 ```shell
 ➜ ./GitLog2Diary.pl "Jack Jiang" >diary.txt 
