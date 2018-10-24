@@ -58,4 +58,5 @@ Null        |21/10 21:53 |Update README.md
 21/10 22:51 |21/10 23:21 |add additional information
 21/10 23:20 |21/10 23:30 |add title
 
+Summery: 27 hours and 23 minutes
 ```
