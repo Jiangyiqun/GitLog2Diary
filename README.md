@@ -24,10 +24,10 @@ git commit -m "01:30 your commit message"
 ./GitLog2Diary.pl ["Author"] [> diary.txt]
 ```
 
-- [Author]: specify an author. If omitted, all authors of this project will be counted.
-- [作者]: 指定一个作者。若不提供，则该项目的所有作者都会被计算在内。
-- [> diary.txt]: output as a text file. If omitted, just print out the diary.
-- [> 日志.txt]: 输出为文本文件。如果忽略，则只是打印到屏幕上。
+- Author: specify an author. If omitted, all authors of this project will be counted.
+- 作者: 指定一个作者。若不提供，则该项目的所有作者都会被计算在内。
+- > diary.txt: output as a text file. If omitted, just print out the diary.
+- > 日志.txt: 输出为文本文件。如果忽略，则只是打印到屏幕上。
 
 ## Example / 例子
 
